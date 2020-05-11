@@ -217,12 +217,11 @@ def app_display():
     second_size = 25
     hour_x = 0
     hour_y = 25
-    second_x = 1
-    second_y =25
+#    second_x = 1
+#    second_y =25
     labels(dt_list[2], hour_x, hour_y, hour_size)
-    labels(dt_list[3], second_x, second_y, second_size)
+#    labels(dt_list[3], second_x, second_y, second_size)
     p_hour = planet_dt()
-
     leave_button = tkinter.Button(main_display, text="Exit", command=clicked)
     leave_button.grid(column=20, row=125)
     Minute = local_time.strftime("%M")
@@ -248,10 +247,10 @@ def summon_clock():
     symbol_1()
 #    Minute = local_time.strftime("%M")
 #    Hour = local_time.strftime("%H")
-#    if Minute == "-1-1":
+#    if Minute == "00":
 #        symbol_0()
-#    if Hour == "-1-1" and Minute == "00":
-#        symbol_-1()
+#    if Hour == "00" and Minute == "00":
+#        symbol_1()
     main_display.mainloop()
 
 
