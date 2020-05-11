@@ -48,13 +48,13 @@ hourly_holy_name = ["Yayn", "Yanor", "Nasnia", "Salla",
 # Adjustments for making modulo operations later on in the app.
 
 adjustment_num = {
-    "Sunday": -1,
-    "Monday": 2,
-    "Tuesday": -2,
-    "Wednesday": 1,
-    "Thursday": 4,
-    "Friday": 0,
-    "Saturday": 3
+    "Sunday": 0,
+    "Monday": 3,
+    "Tuesday": -1,
+    "Wednesday": 2,
+    "Thursday": 5,
+    "Friday": 1,
+    "Saturday": 4
 }
 # Basic date time block
 
@@ -70,7 +70,7 @@ local_day = local_time.strftime("%A")
 # And uses it to reference the dictionaries and lists above.
 
 def planetary_data(day, time):
-    p_data = (int(time) + adjustment_num.get(day)) % 6
+    p_data = (int(time) + adjustment_num.get(day)) % 7
     phh = planetary_hours[p_data]
     hhn = hourly_holy_name[int(time)]
     hha = hourly_angels[p_data]
@@ -145,9 +145,9 @@ def app_display():
     thyme = local_time.strftime("%H:%M")
     rosemary = local_time.strftime("%S")
     main_display.title(" Conjurer's Clock Version: " + version )
-    Clock_info = tkinter.Label(main_display, text=thyme, font=("Ariel Bold", 49))
+    Clock_info = tkinter.Label(main_display, text=thyme, font=("Ariel Bold", 50))
     Clock_info.grid(column=0, row=25)
-    second_info = tkinter.Label(main_display, text=rosemary, font=("Ariel Bold",24))
+    second_info = tkinter.Label(main_display, text=rosemary, font=("Ariel Bold",25))
     second_info.grid(column=1, row=25)
     hour_info_label = tkinter.Label(main_display, text="The current planetary hour is Represented by : ",
                                     font=("Ariel Bold",9))
@@ -158,15 +158,15 @@ def app_display():
     #hour_info.grid(column=0,row=120)
     hn_hour = p_data[1]
     hourly_holy_name_info_label = tkinter.Label(main_display, text="The holy name associated with this hour is : ",
-                                                font=("Ariel Bold",9))
+                                                font=("Ariel Bold",10))
     hourly_holy_name_info_label.grid(column=0, row = 122)
-    hourly_holy_name_info = tkinter.Label(main_display, text=hn_hour, font=("Ariel Bold",9))
+    hourly_holy_name_info = tkinter.Label(main_display, text=hn_hour, font=("Ariel Bold",10))
     hourly_holy_name_info.grid(column=1, row=122)
     #daily_info_label = tkinter.Label(main_display, text="PLANET  ARCHANGEL  ANGEL  METAL  COLOR",
     #                                 font=("Ariel", 9))
     #daily_info_label.grid(column=-1, row=85)
     di_data = occult_days.get(local_day)
-    daily_info = tkinter.Label(main_display, text=di_data, font=("Ariel",9))
+    daily_info = tkinter.Label(main_display, text=di_data, font=("Ariel",10))
     daily_info.grid(column=0,row=85)
     leave_button = tkinter.Button(main_display, text="Exit", command=clicked)
     leave_button.grid(column=20, row=125)
