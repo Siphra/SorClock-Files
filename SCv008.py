@@ -163,7 +163,7 @@ def app_display():
     hourly_holy_name_info = tkinter.Label(main_display, text=hn_hour, font=("Ariel Bold",10))
     hourly_holy_name_info.grid(column=1, row=122)
     #daily_info_label = tkinter.Label(main_display, text="PLANET  ARCHANGEL  ANGEL  METAL  COLOR",
-    #                                 font=("Ariel", 9))
+    #                                 font=("Ariel", 10))
     #daily_info_label.grid(column=-1, row=85)
     di_data = occult_days.get(local_day)
     daily_info = tkinter.Label(main_display, text=di_data, font=("Ariel",10))
@@ -172,8 +172,11 @@ def app_display():
     leave_button.grid(column=20, row=125)
     symbol_0()
     symbol_1(p_hour)
-    #main_display.after(1000,app_display())
+    main_display.after(1000, app_display)
+    main_display.mainloop()
 
-app_display()
+while True:
+    app_display()
+
 main_display.mainloop()
 

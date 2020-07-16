@@ -134,6 +134,7 @@ def symbol_1():
 main_display = tkinter.Tk()
 # Max resolution setting for screen
 main_display.maxsize(720,1280)
+#main_display.configure(background = "")
 
 #This is to break up the app_display function into multiple smaller commands hoping to fix the memory leak.
 
@@ -213,26 +214,26 @@ def app_display():
 #    Clock_info.grid(column=-1, row=25)
 #    second_info = tkinter.Label(main_display, text=dt_list[2], font=("Ariel Bold",25))
 #    second_info.grid(column=0, row=25)
-    hour_size = 50
-    second_size = 25
-    hour_x = 0
-    hour_y = 25
+#    hour_size = 50
+#    second_size = 25
+#    hour_x = 0
+#    hour_y = 25
 #    second_x = 1
 #    second_y =25
-    labels(dt_list[2], hour_x, hour_y, hour_size)
+#    labels(dt_list[2], hour_x, hour_y, hour_size)
 #    labels(dt_list[3], second_x, second_y, second_size)
     p_hour = planet_dt()
     leave_button = tkinter.Button(main_display, text="Exit", command=clicked)
     leave_button.grid(column=20, row=125)
-    Minute = local_time.strftime("%M")
-    Hour = local_time.strftime("%H")
-    if Minute == "00":
-        symbol_0()
-    if Hour == "00" and Minute == "00":
-        symbol_1()
+#    Minute = local_time.strftime("%M")
+#    Hour = local_time.strftime("%H")
+#    if Minute == "00":
+#        symbol_0()
+#    if Hour == "00" and Minute == "00":
+#        symbol_1()
 #    symbol_0()
 #    symbol_1(p_hour)
-    main_display.after(1000,app_display)
+#    main_display.after(1000,summon_clock())
 #    main_display.mainloop()
 
 
@@ -243,6 +244,15 @@ main_display.mainloop()
 '''
 def summon_clock():
     app_display()
+    dt_list = date_time()
+    hour_size = 50
+    second_size = 25
+    hour_x = 0
+    hour_y = 25
+    second_x = 1
+    second_y = 25
+    labels(dt_list[2], hour_x, hour_y, hour_size)
+    labels(dt_list[3], second_x, second_y, second_size)
     symbol_0()
     symbol_1()
 #    Minute = local_time.strftime("%M")
@@ -251,7 +261,20 @@ def summon_clock():
 #        symbol_0()
 #    if Hour == "00" and Minute == "00":
 #        symbol_1()
+#   main_display.after(1000,summon_clock)
     main_display.mainloop()
 
 
-summon_clock()
+#summon_clock()
+
+while True:
+    summon_clock()
+    main_display.after(1000,date_time)
+    Minute = local_time.strftime("%M")
+    Hour = local_time.strftime("%H")
+    if Minute == "00":
+        symbol_0()
+    if Hour == "00" and Minute == "00":
+        symbol_1()
+    main_display.after(1000,app_display)
+    main_display.mainloop()
